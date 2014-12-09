@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    
+	<ui:composition template="../master.xhtml">
+	    <ui:define name="content">
+	    
+	    	<h1>Wizard</h1>
+	    	
+			<h:form>
+                 
+			    <p:growl id="growl" sticky="true" showDetail="true"/>
+			 
+			    <p:wizard flowListener="#{userWizardBean.onFlowProcess}">
+			        <p:tab id="personal" title="Personal">
+			            <p:panel header="Personal Details">
+			                <p:messages />
+			                <h:panelGrid columns="2" columnClasses="label, value">
+			                    <h:outputText value="Firstname: *" />
+			                    <p:inputText value="#{userWizardBean.user.firstname}" required="true" label="Firstname"/>
+			 
+			                    <h:outputText value="Lastname: *" />
+			                    <p:inputText value="#{userWizardBean.user.lastname}" required="true" label="Lastname"/>
+			 
+			                    <h:outputText value="Age: " />
+			                    <p:inputText value="#{userWizardBean.user.age}" />
+			 
+			                    <h:outputText value="Skip to last: " />
+			                    <h:selectBooleanCheckbox value="#{userWizardBean.skip}" />
+			                </h:panelGrid>
+			            </p:panel>
+			        </p:tab>
+			 
+			        <p:tab id="address" title="Address">
+			            <p:panel header="Address Details">
+			                <p:messages />
+			                <h:panelGrid columns="2" columnClasses="label, value">
+			                    <h:outputText value="Street: " />
+			                    <p:inputText value="#{userWizardBean.user.street}" />
+			 
+			                    <h:outputText value="Postal Code: " />
+			                    <p:inputText value="#{userWizardBean.user.postalCode}" />
+			 
+			                    <h:outputText value="City: " />
+			                    <p:inputText value="#{userWizardBean.user.city}" />
+			 
+			                    <h:outputText value="Skip to last: " />
+			                    <h:selectBooleanCheckbox value="#{userWizardBean.skip}" />
+			                </h:panelGrid>
+			            </p:panel>
+			        </p:tab>
+			 
+			        <p:tab id="contact" title="Contact">
+			            <p:panel header="Contact Information">
+			                <p:messages />
+			                <h:panelGrid columns="2" columnClasses="label, value">
+			                    <h:outputText value="Email: *" />
+			                    <p:inputText value="#{userWizardBean.user.email}" required="true" label="Email"/>
+			 
+			                    <h:outputText value="Phone: " />
+			                    <p:inputText value="#{userWizardBean.user.phone}"/>
+			 
+			                    <h:outputText value="Additional Info: " />
+			                    <p:inputText value="#{userWizardBean.user.info}"/>
+			                </h:panelGrid>
+			            </p:panel>
+			        </p:tab>
+			 
+			        <p:tab id="confirm" title="Confirmation">
+			            <p:panel header="Confirmation">
+			                <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+			                    <h:panelGrid columns="2" columnClasses="label, value">
+			                        <h:outputText value="Firstname: " />
+			                        <h:outputText value="#{userWizardBean.user.firstname}" styleClass="outputLabel"/>
+			 
+			                        <h:outputText value="Lastname: " />
+			                        <h:outputText value="#{userWizardBean.user.lastname}" styleClass="outputLabel"/>
+			 
+			                        <h:outputText value="Age: " />
+			                        <h:outputText value="#{userWizardBean.user.age}" styleClass="outputLabel"/>
+			                    </h:panelGrid>
+			 
+			                    <h:panelGrid columns="2" columnClasses="label, value">
+			                        <h:outputText value="Street: " />
+			                        <h:outputText value="#{userWizardBean.user.street}" styleClass="outputLabel"/>
+			 
+			                        <h:outputText value="Postal: " />
+			                        <h:outputText value="#{userWizardBean.user.postalCode}" styleClass="outputLabel"/>
+			 
+			                        <h:outputText value="City: " />
+			                        <h:outputText value="#{userWizardBean.user.city}" styleClass="outputLabel"/>
+			                    </h:panelGrid>
+			 
+			                    <h:panelGrid columns="2" columnClasses="label, value">
+			                        <h:outputText value="Email: " />
+			                        <h:outputText value="#{userWizardBean.user.email}" styleClass="outputLabel"/>
+			 
+			                        <h:outputText value="Phone " />
+			                        <h:outputText value="#{userWizardBean.user.phone}" styleClass="outputLabel"/>
+			 
+			                        <h:outputText value="Info: " />
+			                        <h:outputText value="#{userWizardBean.user.info}" styleClass="outputLabel"/>
+			 
+			                        <h:outputText />
+			                        <h:outputText />
+			                    </h:panelGrid>
+			                </h:panelGrid>
+			 
+			                <p:commandButton value="Submit" actionListener="#{userWizardBean.save}" update="growl" process="@this"/>
+			            </p:panel>
+			        </p:tab>
+			    </p:wizard>
+			 
+			</h:form>
+			
+	    </ui:define>
+	</ui:composition>
+
+</html>

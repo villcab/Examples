@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <ui:composition template="../master.xhtml">
+        <ui:define name="content">
+
+            <style type="text/css">
+                .ui-picklist .ui-picklist-list {
+                    width: 350px;
+                    height : 350px;
+                }
+            </style>
+            
+            
+
+            <h1>PickList</h1>
+            
+            
+            <h:form id="frm_pick">
+                <p:growl id="msg" showDetail="true" escape="false" />
+
+                <p:pickList id="PojoPickList" value="#{pickListHibribBean.dualUsers}" var="var_user" effect="bounce"
+                            itemValue="#{var_user}" itemLabel="#{var_user.firstname}"
+                            showSourceFilter="true" showTargetFilter="true" valueChangeListener="4"
+                            filterMatchMode="contains" converter="userConvert" styleClass="selectableControl"
+                            onTransfer="showItems()">
+
+                    <f:facet name="sourceCaption">Disponible</f:facet>
+                    <f:facet name="targetCaption">Seleccionado</f:facet>
+
+                    <p:column style="width:85%;">
+                        <h:outputText value="#{var_user.firstname}"/>
+                    </p:column>
+                    
+                    <p:column style="width:2%;" styleClass="hidden">
+                        <p:commandButton id="decrement" icon="ui-icon-minusthick" actionListener="#{pickListHibribBean.rebajar}" update="PojoPickList" oncomplete="showItems()">
+                        	<f:param name="id" value="#{var_user.id}"/>
+                        </p:commandButton>
+                    </p:column>
+                    
+                    <p:column style="width:2%;" styleClass="hidden">
+                        <p:commandButton id="increment" icon="ui-icon-plusthick" actionListener="#{pickListHibribBean.aumentar}" update="PojoPickList" oncomplete="showItems()">
+                        	<f:param name="id" value="#{var_user.id}"/>
+                        </p:commandButton>
+                    </p:column>
+                    
+                    <p:column style="width:10%; text-align:center" styleClass="hidden">
+		            	<p:outputLabel value="#{var_user.age}" size="2"/>
+                    </p:column>
+                    
+			</p:pickList>
+                
+                <script type="text/javascript">
+	                $(document).ready(function() {
+	                    $(".selectableControl li").unbind("dblclick");
+	
+	                    $('.ui-picklist ul').eq(0).find('.hidden').each(function() {
+                            $(this).hide();
+                        });
+                        $('.ui-picklist ul').eq(1).on("sortstop", function(event, ui) {
+                            showItems();
+                        });
+	                });
+	
+	                function showItems() {
+	                	$(".selectableControl li").unbind("dblclick");
+	                	$('.ui-picklist ul').eq(1).find('.hidden').each(function() {
+                            $(this).show();
+                        });
+                        $('.ui-picklist ul').eq(0).find('.hidden').each(function() {
+                            $(this).hide();
+                        });
+	                }
+	            </script>
+
+            </h:form>
+            
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,81 @@
+
+body {
+	font-family: sans-serif;
+	font-size: 11px;
+}
+
+h1 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: #6B6B6B;
+	font-size: 22px;
+	border-bottom: 1px solid #d7d7d7;
+}
+
+h2 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: #6B6B6B;
+	font-size: 17px;
+	border-bottom: 1px solid #d7d7d7;
+}
+
+.home_center {
+	/*	centrar el logotipo del home*/
+	position: absolute;
+	left: 50%;
+	margin-left: -100px;
+	top: 50%;
+	margin-top: -62px;
+}
+
+#box_container {
+	margin: 0px 15px 15px 15px;
+}
+
+.spacer {
+	margin: 10px 0px 10px 0px;
+}
+
+.label {
+	font-weight: bold;
+	background: #DFE4E6;
+	float: right;
+}
+
+.label2 {
+	font-weight: bold;
+	background: #DFE4E6;
+}
+
+.menu_option .ui-button-text-icon-left .ui-button-text {
+	padding:0.4em 1em 0.4em 1.4em;
+	height: 10px;
+}
+
+.footer_text {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+	background: #D4D4D4;
+}
+
+/*	colores para los estados de las ordenes de trabajo y prioridades*/
+.prioridad_alta {
+	background: #DC143C;
+	border-color: #DC143C;
+}
+
+.prioridad_media {
+	background: #25657C;
+	background-color: #25657C;
+}
+
+.prioridad_baja {
+	background: #257e4a;
+	border-color: #257e4b;
+}

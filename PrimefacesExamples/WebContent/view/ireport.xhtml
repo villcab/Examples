@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<body>
+	<ui:composition template="../master.xhtml">
+	    <ui:define name="content">
+	    
+	    	<h1>iReport</h1>
+	    	
+			<h:form id="form">
+				<p:commandButton value="Generar Reporte"
+								 actionListener="#{reportBean.generarReporte}"
+								 ajax="false"
+								 onclick="PF('dialog').show();form.target='frame'"
+								 icon="ui-icon-clipboard"/>
+				
+				<!-- para abrir una nueva mandar _blank -->
+				<!-- para abrir en el dialog entonces frame -->
+				
+				<br /><br />
+							 
+				<p:dataTable var="row" value="#{reportBean.users}">
+					<f:facet name="header">
+						Lista de Usuarios
+					</f:facet>
+					<p:column>
+						<p:outputLabel value="#{row.firstname}"/>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+			
+			<p:dialog width="900" height="550" visible="false" widgetVar="dialog"
+				resizable="false" modal="true" draggable="true" closeOnEscape="true"
+				header="Preview" styleClass="preview" appendTo="@(body)" showEffect="fade" hideEffect="fade">
+				
+				<f:facet name="header">
+					<h:form styleClass="toolbar ui-state-default">
+						<p:menuButton value="Export">
+							<p:menuitem value="To PDF File"
+										icon="ui-icon-copy"
+										ajax="false" 
+										actionListener="#{reportBean.doExportPdf}"/>
+										
+							<p:menuitem value="To Excel Sheet" 
+										icon="ui-icon-calculator" 
+										ajax="false" 
+										actionListener="#{reportBean.doExportXlsx}"/>
+										
+							<p:menuitem value="To Word Document" 
+										icon="ui-icon-document" 
+										ajax="false" 
+										actionListener="#{reportBean.doExportDocx}"/>
+						</p:menuButton>
+					</h:form>
+				</f:facet>
+				
+				<iframe width="100%" height="100%" id="frame" name="frame" frameborder="0" />
+					
+			</p:dialog>
+			
+	    </ui:define>
+	</ui:composition>
+</body>
+</html>

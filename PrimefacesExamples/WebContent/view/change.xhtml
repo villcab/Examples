@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+<body>
+	<ui:composition template="../master.xhtml">
+	    <ui:define name="content">
+	    
+	    	<h1>CAMBIO</h1>
+	    	
+			<h:form id="form">
+			
+			
+				<p:outputPanel id="out_uno" rendered="#{changeBean.swUno}">
+					PRIMERA VISTA
+				</p:outputPanel>
+				
+				<p:outputPanel id="out_dos" rendered="#{changeBean.swDos}">
+					SEGUNDA VISTA
+				</p:outputPanel>
+				
+				<p:commandButton value="Cambiar"
+								 actionListener="#{changeBean.cambiar}"
+								 update="form"
+								 icon="ui-icon-clipboard"/>
+			</h:form>
+			
+	    </ui:define>
+	</ui:composition>
+</body>
+</html>

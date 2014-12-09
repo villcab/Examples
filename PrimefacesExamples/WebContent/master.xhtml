@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>.: PRIMEFACES EXAPLES :.</title>
+	
+	<link href="#{request.contextPath}/resources/css/style-master.css" rel="stylesheet" type="text/css" />
+	<link href="#{request.contextPath}/resources/css/style-icons.css" rel="stylesheet" type="text/css" />
+</h:head>
+
+<h:body>
+
+	<p:layout fullPage="true">
+		
+		<p:layoutUnit position="west" header="Menu del Sistema" collapsible="true" resizable="true" size="230" minSize="230" maxSize="260">
+			<h:form>
+			
+				<div style="text-align: center; margin: 10px 0px 10px 0px;">
+				
+					<h:graphicImage value="/resources/img/logo_blue.png" />
+				    
+				</div>
+				
+				<p:panelMenu style="width: 100%">
+				
+					<p:submenu label="Datos">
+			          	<p:menuitem value="Wizard" url="/view/wizard.xhtml" />
+			          	<p:menuitem value="Schedule" url="/view/schedule.xhtml" />
+			       </p:submenu>
+			       <p:submenu label="Metodos de Entrada">
+			          	<p:menuitem value="PickList Dual Hibrido" url="/view/picklist.xhtml" />
+			          	<p:menuitem value="Reporte" url="/view/ireport.xhtml" />
+			          	<p:menuitem value="Cambio" url="/view/change.xhtml" />
+			       </p:submenu>
+					
+				</p:panelMenu>
+				
+				<div class="footer_text">FirstOneSoft © Copyright Santa Cruz Bolivia - 2014</div>
+				
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			
+			<div id="box_container">
+				<ui:insert name="content" />
+			</div>
+			
+		</p:layoutUnit>
+
+	</p:layout>
+	
+</h:body>
+
+</html>
